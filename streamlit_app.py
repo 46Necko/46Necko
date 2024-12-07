@@ -55,7 +55,7 @@ questions = [
     }
 ]
 
-# 現在の問題を表示
+# 問題の表示
 def display_question(question_data):
     st.subheader(f"問題 {st.session_state.question_number}: 次の文を正しく完成させてください。")
     st.write(question_data["question"])
@@ -71,12 +71,12 @@ def display_question(question_data):
             else:
                 st.error(f"間違いです。正しい答えは '{question_data['correct_answer']}' です。")
             st.write(question_data["explanation"])
-            
+
             # 次の問題へ進むボタンを表示
             if st.button("次の問題へ"):
                 st.session_state.question_number += 1
 
-# 問題の表示
+# 問題の進行管理
 if st.session_state.question_number <= len(questions):
     display_question(questions[st.session_state.question_number - 1])
 else:
