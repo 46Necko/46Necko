@@ -6,7 +6,7 @@ if 'question_number' not in st.session_state:
     st.session_state.score = 0
     st.session_state.selected_answer = None  # 解答選択をリセット
 
-# 問題1: 現在形と過去形の選択肢問題
+# 問題1: 現在形と過去形の選択肢問題あ
 def question_1():
     st.subheader("問題 1: 次の文を正しく完成させてください。")
     question = "I ___ (eat) lunch at 12:00 every day."
