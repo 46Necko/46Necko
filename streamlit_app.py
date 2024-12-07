@@ -4,6 +4,7 @@ import streamlit as st
 if 'question_number' not in st.session_state:
     st.session_state.question_number = 1
     st.session_state.score = 0
+    st.session_state.selected_answer = None  # 解答選択をリセット
 
 # 問題1: 現在形と過去形の選択肢問題
 def question_1():
@@ -15,19 +16,23 @@ def question_1():
         "現在形を使うべきです。'every day' のように、習慣や普段の行動を表すときは "
         "現在形の動詞を使います。'eat' が正しいです。"
     )
+    
+    # 解答選択
     user_answer = st.radio(question, options, key="q1")
-
-    if user_answer:
-        if user_answer == correct_answer:
-            st.session_state.score += 1
-            st.success("正解です！")
-        else:
-            st.error(f"間違いです。正しい答えは '{correct_answer}' です。")
-        st.write(explanation)
-
-        # 次の問題へ進むボタン
-        if st.button("次の問題へ"):
-            st.session_state.question_number += 1
+    
+    # 決定ボタン
+    if st.button("決定", key="q1_button"):
+        if user_answer:
+            st.session_state.selected_answer = user_answer  # 解答をセッションに保存
+            if user_answer == correct_answer:
+                st.session_state.score += 1
+                st.success("正解です！")
+            else:
+                st.error(f"間違いです。正しい答えは '{correct_answer}' です。")
+            st.write(explanation)
+            # 次の問題へ進むボタンを表示
+            if st.button("次の問題へ"):
+                st.session_state.question_number += 1
 
 # 問題2: 一般動詞の使い方
 def question_2():
@@ -39,19 +44,23 @@ def question_2():
         "'She' のように三人称単数の主語がある場合、動詞に 's' をつける必要があります。"
         "したがって、'goes' が正解です。"
     )
+    
+    # 解答選択
     user_answer = st.radio(question, options, key="q2")
-
-    if user_answer:
-        if user_answer == correct_answer:
-            st.session_state.score += 1
-            st.success("正解です！")
-        else:
-            st.error(f"間違いです。正しい答えは '{correct_answer}' です。")
-        st.write(explanation)
-
-        # 次の問題へ進むボタン
-        if st.button("次の問題へ"):
-            st.session_state.question_number += 1
+    
+    # 決定ボタン
+    if st.button("決定", key="q2_button"):
+        if user_answer:
+            st.session_state.selected_answer = user_answer  # 解答をセッションに保存
+            if user_answer == correct_answer:
+                st.session_state.score += 1
+                st.success("正解です！")
+            else:
+                st.error(f"間違いです。正しい答えは '{correct_answer}' です。")
+            st.write(explanation)
+            # 次の問題へ進むボタンを表示
+            if st.button("次の問題へ"):
+                st.session_state.question_number += 1
 
 # 問題3: 助動詞の使い方
 def question_3():
@@ -63,19 +72,23 @@ def question_3():
         "'can' は能力を表す助動詞です。'You can swim very fast.' は「あなたはとても速く泳げる」という意味です。"
         "他の選択肢（'could', 'be', 'will'）は文の意味に合いません。"
     )
+    
+    # 解答選択
     user_answer = st.radio(question, options, key="q3")
-
-    if user_answer:
-        if user_answer == correct_answer:
-            st.session_state.score += 1
-            st.success("正解です！")
-        else:
-            st.error(f"間違いです。正しい答えは '{correct_answer}' です。")
-        st.write(explanation)
-
-        # 最後の問題のため、結果表示ボタン
-        if st.button("結果を見る"):
-            st.session_state.question_number += 1
+    
+    # 決定ボタン
+    if st.button("決定", key="q3_button"):
+        if user_answer:
+            st.session_state.selected_answer = user_answer  # 解答をセッションに保存
+            if user_answer == correct_answer:
+                st.session_state.score += 1
+                st.success("正解です！")
+            else:
+                st.error(f"間違いです。正しい答えは '{correct_answer}' です。")
+            st.write(explanation)
+            # 結果表示ボタン
+            if st.button("結果を見る"):
+                st.session_state.question_number += 1
 
 # 問題の表示
 if st.session_state.question_number == 1:
