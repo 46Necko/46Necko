@@ -14,9 +14,9 @@ explanation_1 = (
 )
 
 # ユーザーの選択を取得
-user_answer_1 = st.radio(question_1, options_1)
+user_answer_1 = st.radio(question_1, options_1, key="q1")
 
-# 解答結果と解説
+# 解答結果と解説（ユーザーが選択後に表示される）
 if user_answer_1:
     if user_answer_1 == answer_1:
         st.success("正解です！")
@@ -35,9 +35,9 @@ explanation_2 = (
 )
 
 # ユーザーの選択を取得
-user_answer_2 = st.radio(question_2, options_2)
+user_answer_2 = st.radio(question_2, options_2, key="q2")
 
-# 解答結果と解説
+# 解答結果と解説（ユーザーが選択後に表示される）
 if user_answer_2:
     if user_answer_2 == answer_2:
         st.success("正解です！")
@@ -56,9 +56,9 @@ explanation_3 = (
 )
 
 # ユーザーの選択を取得
-user_answer_3 = st.radio(question_3, options_3)
+user_answer_3 = st.radio(question_3, options_3, key="q3")
 
-# 解答結果と解説
+# 解答結果と解説（ユーザーが選択後に表示される）
 if user_answer_3:
     if user_answer_3 == answer_3:
         st.success("正解です！")
